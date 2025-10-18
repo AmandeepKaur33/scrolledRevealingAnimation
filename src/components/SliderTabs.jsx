@@ -116,12 +116,7 @@ export default function SlideTabs() {
       className="relative h-[400vh] bg-black w-full px-20 text-white"
     >
       {/* Scroll progress bar on the right */}
-      <div className="fixed right-6 top-16 h-[80vh] w-[2px] bg-gray-50">
-        <motion.div
-          style={{ translateY: verticalMove }}
-          className="absolute left-0 top-0 w-[3px] h-36 bg-blue-500 rounded-full"
-        />
-      </div>
+     
 
       <div className="sticky top-0 h-screen flex items-center w-full justify-center">
         <div className="flex w-full h-[80vh] gap-10 items-start">
@@ -163,56 +158,58 @@ export default function SlideTabs() {
           </div>
 
           {/* Right: Images animation */}
-          <div className="relative w-4/5 h-full rounded-xl overflow-hidden bg-black shadow-2xl">
-            <motion.div
-              style={{ clipPath: clip1 }}
-              className="absolute inset-0 z-10"
-            >
-              <Image
-                src={slides[0].img}
-                alt={slides[0].title}
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </motion.div>
-            <motion.div
-              style={{ clipPath: clip2 }}
-              className="absolute inset-0 z-20"
-            >
-              <Image
-                src={slides[1].img}
-                alt={slides[1].title}
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </motion.div>
-            <motion.div
-              style={{ clipPath: clip3 }}
-              className="absolute inset-0 z-30"
-            >
-              <Image
-                src={slides[2].img}
-                alt={slides[2].title}
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </motion.div>
-            <motion.div
-              style={{ clipPath: clip4 }}
-              className="absolute inset-0 z-40"
-            >
-              <Image
-                src={slides[3].img}
-                alt={slides[3].title}
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </motion.div>
-          </div>
+        {/* Right: Image + Scroll bar beside it */}
+<div className="relative flex items-center h-full w-4/5">
+  {/* Image container */}
+  <div className="relative flex-1 h-full rounded-xl overflow-hidden bg-black shadow-2xl">
+    <motion.div style={{ clipPath: clip1 }} className="absolute inset-0 z-10">
+      <Image
+        src={slides[0].img}
+        alt={slides[0].title}
+        fill
+        className="object-cover object-center"
+        priority
+      />
+    </motion.div>
+    <motion.div style={{ clipPath: clip2 }} className="absolute inset-0 z-20">
+      <Image
+        src={slides[1].img}
+        alt={slides[1].title}
+        fill
+        className="object-cover object-center"
+        priority
+      />
+    </motion.div>
+    <motion.div style={{ clipPath: clip3 }} className="absolute inset-0 z-30">
+      <Image
+        src={slides[2].img}
+        alt={slides[2].title}
+        fill
+        className="object-cover object-center"
+        priority
+      />
+    </motion.div>
+    <motion.div style={{ clipPath: clip4 }} className="absolute inset-0 z-40">
+      <Image
+        src={slides[3].img}
+        alt={slides[3].title}
+        fill
+        className="object-cover object-center"
+        priority
+      />
+    </motion.div>
+  </div>
+
+  {/* Scroll progress bar (beside image, not overlapping) */}
+  <div className="relative h-[100%] w-[4px] ml-6 flex justify-center z-50">
+    <div className="absolute inset-y-0 w-[2px] bg-gray-400 rounded-full" />
+    <motion.div
+      style={{ translateY: verticalMove }}
+      className="absolute top-0 w-[3px] h-36 bg-blue-500 rounded-full"
+    />
+  </div>
+</div>
+
         </div>
       </div>
     </section>
